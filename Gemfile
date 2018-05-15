@@ -46,5 +46,6 @@ group :test, :development do
 end
 
 group :development do
+  # for testing emails in development
   gem 'mailcatcher'
 end
