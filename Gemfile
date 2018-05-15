@@ -44,3 +44,7 @@ group :test, :development do
   gem "sqlite3"
   gem "faker"
 end
+
+group :development do
+  gem 'mailcatcher'
+end
