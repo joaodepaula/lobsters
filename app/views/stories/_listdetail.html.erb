@@ -40,8 +40,8 @@ class="story <%= story.vote && story.vote[:vote] == 1 ? "upvoted" : "" %>
         <% end %>
       </span>
       <% if story.domain.present? %>
-        <a class="domain" href="<%= story.domain_search_url %>"><%=
-          break_long_words(story.domain) %></a>
+        <a class="domain" href="<%= story.domain_search_url %>">(<%=
+          break_long_words(story.domain) %>)</a>
       <% end %>
 
       <% if defined?(single_story) && single_story %>
@@ -69,16 +69,16 @@ class="story <%= story.vote && story.vote[:vote] == 1 ? "upvoted" : "" %>
                 avatar_img(ms.user, 16) %></a>
             <% end %>
             <% if story.user_is_author? %>
-              authored by
+              escrito por
             <% else %>
-              via
+              por
             <% end %>
             <a href="/u/<%= ms.user.username %>" class="<%=
               ms.html_class_for_user %>"><%= ms.user.username %></a>
 
             <%= time_ago_in_words_label(ms.created_at) %>
             <% if ms.is_editable_by_user?(@user) %>
-              |
+              ·
               <a href="<%= edit_story_path(ms.short_id) %>">edit</a>
             <% end %>
           </span>
@@ -96,24 +96,20 @@ class="story <%= story.vote && story.vote[:vote] == 1 ? "upvoted" : "" %>
     <% end %>
 
     <div class="byline">
-      <% if (@user && @user.show_avatars?) || !@user %>
-        <a href="/u/<%= story.user.username %>"><%=
-          avatar_img(story.user, 16) %></a>
-      <% end %>
       <% if story.previewing %>
         <% if story.user_is_author? %>
-          authored by
+          escrito por
         <% else %>
-          via
+          por
         <% end %>
         <a class="<%= story.html_class_for_user %>"><%=
           story.user.username %></a>
         just now
       <% else %>
         <% if story.user_is_author? %>
-          authored by
+          escrito por
         <% else %>
-          via
+          por
         <% end %>
         <a href="/u/<%= story.user.username %>" class="<%=
           story.html_class_for_user %>"><%= story.user.username %></a>
@@ -121,53 +117,53 @@ class="story <%= story.vote && story.vote[:vote] == 1 ? "upvoted" : "" %>
         <%= time_ago_in_words_label(story.created_at) %>
 
         <% if story.is_editable_by_user?(@user) %>
-          |
+          ·
           <a href="<%= edit_story_path(story.short_id) %>" class="<%=
             story.has_suggestions? ? "story_has_suggestions" : "" %>">edit</a>
         <% end %>
         <% if story.can_have_suggestions_from_user?(@user) %>
-          | <%= link_to "suggest", story_suggest_path(story.short_id),
+          · <%= link_to "suggest", story_suggest_path(story.short_id),
             :class => "suggester" %>
         <% end %>
         <% if !story.is_gone? && @user %>
           <% if @user && story.vote && story.vote[:vote] == -1 %>
-            | <a class="flagger">unflag (<%=
+            · <a class="flagger">unflag (<%=
               Vote::STORY_REASONS[story.vote[:reason]].to_s.downcase %>)</a>
           <% elsif @user && @user.can_downvote?(story) %>
-            | <a class="flagger">flag</a>
+            · <a class="flagger">flag</a>
           <% end %>
           <% if story.is_hidden_by_cur_user %>
-            | <%= link_to "unhide", story_unhide_path(story.short_id),
+            · <%= link_to "unhide", story_unhide_path(story.short_id),
               :class => "hider" %>
           <% else %>
-            | <%= link_to "hide", story_hide_path(story.short_id),
+            · <%= link_to "hide", story_hide_path(story.short_id),
               :class => "hider" %>
           <% end %>
           <% if defined?(single_story) && single_story && story.hider_count > 0 %>
             (hidden by <%= pluralize(story.hider_count, "user") %>)
           <% end %>
           <% if story.is_saved_by_cur_user %>
-            | <%= link_to "unsave", story_unsave_path(story.short_id),
+            · <%= link_to "unsave", story_unsave_path(story.short_id),
               :class => "saver" %>
           <% else %>
-            | <%= link_to "save", story_save_path(story.short_id),
+            · <%= link_to "save", story_save_path(story.short_id),
               :class => "saver" %>
           <% end %>
         <% end %>
         <% if story.url.present? %>
-          |
+          ·
           <a href="<%= story.archive_url %>" rel="nofollow"
             target="_blank">cached</a>
         <% end %>
         <% if !story.is_gone? %>
           <span class="comments_label">
-            |
+            ·
             <a href="<%= story.comments_path %>">
             <% if story.comments_count == 0 %>
-              no comments
+              comentar
             <% else %>
               <%= story.comments_count %>
-                comment<%= story.comments_count == 1 ? "" : "s" %>
+                comentário<%= story.comments_count == 1 ? "" : "s" %>
             <% end %>
             </a>
           </span>
@@ -176,7 +172,7 @@ class="story <%= story.vote && story.vote[:vote] == 1 ? "upvoted" : "" %>
         <% if defined?(single_story) && single_story &&
         ((story.downvotes > 0 && @user && @user.is_moderator?) ||
         (story.downvotes >= 3 || story.score <= 0)) %>
-          | <%= story.vote_summary_for(@user).downcase %>
+          · <%= story.vote_summary_for(@user).downcase %>
         <% end %>
       <% end %>
     </div>
