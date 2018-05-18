@@ -44,18 +44,18 @@ module ApplicationHelper
     }
 
     if @user
-      @header_links[threads_path] = { :title => "Your Threads" }
+      @header_links[threads_path] = { :title => "Discussões" }
     end
 
     if @user && @user.can_submit_stories?
-      @header_links[new_story_path] = { :title => "Submit Story" }
+      @header_links[new_story_path] = { :title => "Enviar" }
     end
 
     if @user
-      @header_links[saved_path] = { :title => "Saved" }
+      @header_links[saved_path] = { :title => "Favoritos" }
     end
 
-    @header_links[search_path] = { :title => "Search" }
+    @header_links[search_path] = { :title => "Busca" }
 
     @header_links.each do |k, v|
       v[:class] ||= []

@@ -10,13 +10,13 @@
 <div class="box wide">
   <div class="legend" style="float: right;">
     <% if @direction == :out %>
-      <a href="/messages">View Received</a>
+      <a href="/messages">Ver Recebidas</a>
     <% else %>
-      <a href="/messages/sent">View Sent</a>
+      <a href="/messages/sent">Ver Enviadas</a>
     <% end %>
   </div>
   <div class="legend">
-    Private Messages
+    Mensagens Privadas
     <% if @direction == :out %>
       Sent
     <% end %>
@@ -63,33 +63,33 @@
     <% end %>
   <% else %>
     <p>
-    You do not have any <%= @direction == :in ? "" : "sent" %> private
-      messages.
+    Você não possui nenhuma <%= @direction == :in ? "" : "sent" %> mensagem
+      privada.
     </p>
   <% end %>
 
   <br>
 
   <div class="legend">
-    Compose Message
+    Escrever Mensagem
   </div>
 
   <%= form_for @new_message, :method => :post do |f| %>
     <%= error_messages_for @new_message %>
 
     <div class="boxline">
-      <%= f.label :recipient_username, "To:", :class => "required" %>
+      <%= f.label :recipient_username, "Para:", :class => "required" %>
       <%= f.text_field :recipient_username, :size => 20 %>
     </div>
 
     <div class="boxline">
-      <%= f.label :subject, "Subject:", :class => "required" %>
+      <%= f.label :subject, "Assunto:", :class => "required" %>
       <%= f.text_field :subject, :style => "width: 500px;",
         :maxlength => 100 %>
     </div>
 
     <div class="boxline">
-      <%= f.label :body, "Message:", :class => "required" %>
+      <%= f.label :body, "Mensagem:", :class => "required" %>
       <%= f.text_area :body, :style => "width: 500px;", :rows => 5 %>
     </div>
 
@@ -103,7 +103,7 @@
 
     <div class="boxline">
       <p></p>
-      <%= submit_tag "Send Message" %>
+      <%= submit_tag "Enviar Mensagem" %>
     </div>
   <% end %>
 </div>

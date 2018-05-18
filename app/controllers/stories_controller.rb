@@ -9,7 +9,7 @@ class StoriesController < ApplicationController
   around_action :track_story_reads, only: [:show], if: -> { @user.present? }
 
   def create
-    @title = "Submit Story"
+    @title = "Enviar"
     @cur_url = "/stories/new"
 
     @story = Story.new(story_params)
@@ -65,7 +65,7 @@ class StoriesController < ApplicationController
   end
 
   def new
-    @title = "Submit Story"
+    @title = "Enviar"
     @cur_url = "/stories/new"
 
     @story = Story.new

@@ -271,7 +271,7 @@ class CommentsController < ApplicationController
       return redirect_to "/login"
     else
       @showing_user = @user
-      @heading = @title = "Your Threads"
+      @heading = @title = "Discussões"
       @cur_url = "/threads"
     end
 
