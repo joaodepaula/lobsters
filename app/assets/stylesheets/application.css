@@ -21,11 +21,12 @@ body, textarea, input, button {
 }
 
 body {
-	background-color: #fefefe;
+	background-color: #eef2f5;
+	margin: 0;
 }
 
 a {
-	color: #2562dc;
+	color: #1463b4;
 	cursor: pointer;
 }
 
@@ -256,6 +257,7 @@ div#wrapper {
 	padding-bottom: 2em;
 	min-width: 600px;
 	max-width: 900px;
+	background-color: #fefefe;
 }
 div#inside {
 	margin-left: 0.25em;
@@ -267,8 +269,7 @@ div#inside {
 
 #header {
 	font-weight: bold;
-	padding: 5px 10px;
-	margin-top: 1em;
+	padding: 1.5em 10px 5px 10px;
 	margin-bottom: 0.5em;
 	line-height: 18px;
 }
@@ -294,11 +295,16 @@ div#inside {
 	background-position: center;
 	float: left;
 	display: block;
-	width: 16px;
-	height: 16px;
+	width: 72px;
+	height: 31px;
 	padding: 1px;
 	margin-left: 4px;
 	margin-right: 11px;
+	background-image: url(nimio.png);
+	background-size: 60px;
+	background-repeat: no-repeat;
+	border-radius: 7px;
+	margin-top: -8px;
 }
 
 #headertitle {
@@ -442,7 +448,7 @@ div.voters .downvoter {
 
 div.voters .upvoter:hover,
 .upvoted div.voters .upvoter {
-	border-bottom-color: #ac130d;
+	border-bottom-color: #1463b4;
 }
 
 div.voters .upvoter {
@@ -515,12 +521,11 @@ li div.details {
 }
 
 li .link {
-	font-weight: bold;
 	vertical-align: middle;
 }
 
 li .link a {
-	font-size: 11.5pt;
+	font-size: 12pt;
 	text-decoration: none;
 }
 
@@ -672,7 +677,7 @@ li .byline a.comment_replier {
 }
 span.new_user, a.new_user,
 li .byline a.new_user {
-	color: green;
+	/*color: green;*/
 }
 span.inactive_user, a.inactive_user,
 li .byline a.inactive_user {
@@ -892,7 +897,7 @@ div#story_preview {
 }
 
 div#story_box input#story_url {
-	width: 508px;
+	width: 500px;
 }
 div#story_box button#story_fetch_title {
 	padding-top: 1px;
