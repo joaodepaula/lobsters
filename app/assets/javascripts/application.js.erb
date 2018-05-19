@@ -49,12 +49,12 @@ var _Lobsters = Class.extend({
     if (li.hasClass("saved")) {
       act = "unsave";
       li.removeClass("saved");
-      saverEl.innerHTML = "save";
+      saverEl.innerHTML = "favoritar";
     }
     else {
       act = "save";
       li.addClass("saved");
-      saverEl.innerHTML = "unsave";
+      saverEl.innerHTML = "desfavoritar";
     }
 
     $.post("/stories/" + li.attr("data-shortid") + "/" + act);

@@ -9,52 +9,52 @@
   <div class="legend">
     <%= @heading %>
   </div>
-</div>
 
-<% if @replies.present? %>
-  <ol class="comments comments1">
-    <% @replies.each do |reply| %>
-      <li class="comments_subtree">
-        <%= render "comments/comment",
-            comment: reply.comment,
-            show_story: true,
-            is_unread: reply.is_unread,
-            show_tree_lines: false %>
-        <ol class="comments"></ol>
-      </li>
-    <% end %>
-  </ol>
-<% else %>
-  <p class="help">Nenhuma resposta a ser exibida.</p>
-<% end %>
-
-<% if @replies.count > RepliesController::REPLIES_PER_PAGE && @filter != 'unread'%>
-<div class="morelink">
-  <% if @page && @page > 1 %>
-    <a href="/replies<%= @page == 2 ? "" : "/page/#{@page - 1}" %>">&lt;&lt;
-      Page <%= @page - 1 %></a>
+  <% if @replies.present? %>
+    <ol class="comments comments1">
+      <% @replies.each do |reply| %>
+        <li class="comments_subtree">
+          <%= render "comments/comment",
+              comment: reply.comment,
+              show_story: true,
+              is_unread: reply.is_unread,
+              show_tree_lines: false %>
+          <ol class="comments"></ol>
+        </li>
+      <% end %>
+    </ol>
+  <% else %>
+    <p class="help">Nenhuma resposta a ser exibida.</p>
   <% end %>
 
-  <% if @replies.any? %>
+  <% if @replies.count > RepliesController::REPLIES_PER_PAGE && @filter != 'unread'%>
+  <div class="morelink">
     <% if @page && @page > 1 %>
-      |
+      <a href="/replies<%= @page == 2 ? "" : "/page/#{@page - 1}" %>">&lt;&lt;
+        Page <%= @page - 1 %></a>
     <% end %>
 
-    <a href="/replies/page/<%= @page + 1 %>">Page
-      <%= @page + 1 %> &gt;&gt;</a>
-  <% end %>
-</div>
-<% end %>
+    <% if @replies.any? %>
+      <% if @page && @page > 1 %>
+        |
+      <% end %>
 
-<div class="help">
-  <% case action_name
-     when "all" %>
-    Todas as respostas às suas histórias e comentários, ordenadas por data.
-  <% when "comments" %>
-    Todas as respostas aos seus comentários, ordenadas por data.
-  <% when "unread" %>
-    Novas respostas às suas histórias e comentários que você ainda não viu nesta página ou na páginas das histórias.
-  <% when "stories" %>
-    Todas as respostas às histórias que você enviou, ordenadas por data.
+      <a href="/replies/page/<%= @page + 1 %>">Page
+        <%= @page + 1 %> &gt;&gt;</a>
+    <% end %>
+  </div>
   <% end %>
+
+  <div class="help">
+    <% case action_name
+       when "all" %>
+      Todas as respostas às suas histórias e comentários, ordenadas por data.
+    <% when "comments" %>
+      Todas as respostas aos seus comentários, ordenadas por data.
+    <% when "unread" %>
+      Novas respostas às suas histórias e comentários que você ainda não viu nesta página ou na páginas das histórias.
+    <% when "stories" %>
+      Todas as respostas às histórias que você enviou, ordenadas por data.
+    <% end %>
+  </div>
 </div>

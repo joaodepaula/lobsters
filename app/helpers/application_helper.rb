@@ -38,7 +38,7 @@ module ApplicationHelper
     return @header_links if @header_links
 
     @header_links = {
-      root_path => { :title => @cur_url == "/" ? Rails.application.name : "Home" },
+      root_path => { :title => @cur_url == "/" ? Rails.application.name : "Melhores" },
       recent_path => { :title => "Recentes" },
       comments_path => { :title => "Comentários" },
     }
@@ -77,19 +77,19 @@ module ApplicationHelper
       if (count = @user.unread_replies_count) > 0
         @right_header_links[replies_unread_path] = {
           :class => ["new_messages"],
-          :title => "#{@user.unread_replies_count} Reply".pluralize(count),
+          :title => "#{@user.unread_replies_count} Resposta".pluralize(count),
         }
       else
-        @right_header_links[replies_path] = { :title => "Replies" }
+        @right_header_links[replies_path] = { :title => "Respostas" }
       end
 
       if (count = @user.unread_message_count) > 0
         @right_header_links[messages_path] = {
           :class => ["new_messages"],
-          :title => "#{@user.unread_message_count} Message".pluralize(count),
+          :title => "#{@user.unread_message_count} Mensagem".pluralize(count),
         }
       else
-        @right_header_links[messages_path] = { :title => "Messages" }
+        @right_header_links[messages_path] = { :title => "Mensagens" }
       end
 
       @right_header_links[settings_path] = { :title => "#{@user.username} (#{@user.karma})" }
@@ -148,24 +148,24 @@ module ApplicationHelper
     ago = ""
     secs = (Time.current - time).to_i
     if secs <= 5
-      ago = "just now"
+      ago = "há poucos segundos"
     elsif secs < 60
-      ago = "less than a minute ago"
+      ago = "há menos de um minuto"
     elsif secs < (60 * 60)
       mins = (secs / 60.0).floor
-      ago = "#{mins} #{'minute'.pluralize(mins)} ago"
+      ago = "há #{mins} #{'minuto'.pluralize(mins)}"
     elsif secs < (60 * 60 * 48)
       hours = (secs / 60.0 / 60.0).floor
-      ago = "#{hours} #{'hour'.pluralize(hours)} ago"
+      ago = "há #{hours} #{'hora'.pluralize(hours)}"
     elsif secs < (60 * 60 * 24 * 30)
       days = (secs / 60.0 / 60.0 / 24.0).floor
-      ago = "#{days} #{'day'.pluralize(days)} ago"
+      ago = "há #{days} #{'dia'.pluralize(days)}"
     elsif secs < (60 * 60 * 24 * 365)
       months = (secs / 60.0 / 60.0 / 24.0 / 30.0).floor
-      ago = "#{months} #{'month'.pluralize(months)} ago"
+      ago = "há #{months} #{'mês'.pluralize(months)}"
     else
       years = (secs / 60.0 / 60.0 / 24.0 / 365.0).floor
-      ago = "#{years} #{'year'.pluralize(years)} ago"
+      ago = "há #{years} #{'ano'.pluralize(years)}"
     end
 
     span_class = ''

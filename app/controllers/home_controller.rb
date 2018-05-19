@@ -18,11 +18,37 @@ class HomeController < ApplicationController
 
   def about
     begin
-      @title = "About"
+      @title = "Sobre"
       render :action => "about"
     rescue ActionView::MissingTemplate
-      render :html => ("<div class=\"box wide\">" <<
-        "A mystery." <<
+      render :html => ("<div class=\"box wide\" style=\"max-width: 610px;\">" <<
+        "<br>
+        O Nimio é um agregador de notícias e discussões sobre startups e
+        tecnologia – inspirado no Hacker News, porém em língua portuguesa.
+        <br>
+        O site foi criado por <a href=\"http://twitter.com/rriccio\"
+        target=\"_blank\">Roberto Riccio</a> e
+        <a href=\"http://twitter.com/joaopdepaula\" target=\"_blank\">João
+        de Paula</a>, dois alumni brasileiros do Y Combinator, após anos de
+        frustração com a falta de um espaço onde programadores e
+        empreendedores pudessem compartilhar e discutir.
+        <br>
+        O Nimio não possui fins lucrativos e o <a
+        href=\"https://github.com/joaodepaula/lobsters\" target=\"_blank\">código
+        fonte</a> é open source, aberto a quem quiser revisar ou contribuir. Ele
+        é um fork do <a href=\"https://github.com/lobsters/lobsters\"
+        target=\"_blank\">Lobsters</a>, projeto generosamente compartilhado por
+        <a href=\"https://twitter.com/jcs\" target=\"_blank\"> Joshua Stein</a>,
+        a quem agradecemos.
+        <br>
+        Se você acredita no missão do Nimio e deseja contribuir, peça um convite
+        para fazer parte da comunidade. Basta pedir a um usuário existente
+        ou preencher o <a href=\"https://goo.gl/forms/yiDFUn6W7Ji805kc2\">
+        formulário de aplicação</a>.
+
+
+
+        " <<
         "</div>").html_safe, :layout => "application"
     end
   end
@@ -148,7 +174,7 @@ class HomeController < ApplicationController
       paginate Story.recent(@user, filtered_tag_ids)
     }
 
-    @heading = @title = "Recent Stories"
+    @heading = @title = "Histórias Recentes"
     @cur_url = "/recent"
 
     # our list is unstable because upvoted stories get removed, so point at /newest.rss
@@ -167,7 +193,7 @@ class HomeController < ApplicationController
       :href => user_token_link("/saved.rss"),
     }
 
-    @heading = @title = "Saved Stories"
+    @heading = @title = "Histórias Favoritas"
     @cur_url = "/saved"
 
     respond_to do |format|

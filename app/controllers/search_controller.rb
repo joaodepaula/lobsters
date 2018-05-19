@@ -1,6 +1,6 @@
 class SearchController < ApplicationController
   def index
-    @title = "Search"
+    @title = "Busca"
     @cur_url = "/search"
 
     @search = Search.new

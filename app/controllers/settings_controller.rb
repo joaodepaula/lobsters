@@ -4,7 +4,7 @@ class SettingsController < ApplicationController
   TOTP_SESSION_TIMEOUT = (60 * 15)
 
   def index
-    @title = "Account Settings"
+    @title = "Configurações da Conta"
 
     @edit_user = @user.dup
   end

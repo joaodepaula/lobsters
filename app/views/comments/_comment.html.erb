@@ -51,11 +51,6 @@ class="comment <%= comment.current_vote ? (comment.current_vote[:vote] == 1 ?
         <span class="merge"></span>
       <% end %>
 
-      <% if (@user && @user.show_avatars?) || !@user %>
-        <a href="/u/<%= comment.user.username %>"><%=
-          avatar_img(comment.user, 16) %></a>
-      <% end %>
-
       <a href="/u/<%= comment.user.username %>"
         class="<%= comment.html_class_for_user %>"><%=
         comment.user.username %></a>
@@ -81,33 +76,33 @@ class="comment <%= comment.current_vote ? (comment.current_vote[:vote] == 1 ?
       <% end %>
 
       <% if !comment.previewing %>
-        |
+        ·
         <a href="<%= comment.url %>">link</a>
 
         <% if comment.is_editable_by_user?(@user) %>
-          |
-          <a tabindex="0" class="comment_editor">edit</a>
+          ·
+          <a tabindex="0" class="comment_editor">editar</a>
         <% end %>
 
         <% if comment.is_gone? && comment.is_undeletable_by_user?(@user) %>
-          |
+          ·
           <a tabindex="0" class="comment_undeletor">undelete</a>
         <% elsif !comment.is_gone? && comment.is_deletable_by_user?(@user) %>
-          |
+          ·
           <% if @user && @user.is_moderator? && @user.id != comment.user_id %>
-            <a tabindex="0" class="comment_moderator">delete</a>
+            <a tabindex="0" class="comment_moderator">deletar</a>
           <% else %>
-            <a tabindex="0" class="comment_deletor">delete</a>
+            <a tabindex="0" class="comment_deletor">deletar</a>
           <% end %>
         <% end %>
 
         <% if @user && !comment.story.is_gone? && !comment.is_gone? %>
-            |
-            <a tabindex="0" class="comment_replier" unselectable="on">reply</a>
+            ·
+            <a tabindex="0" class="comment_replier" unselectable="on">responder</a>
         <% end %>
 
         <% if defined?(show_story) && show_story %>
-          | on:
+          · em:
           <a href="<%= comment.story.comments_path %>"><%= comment.story.title
             %></a>
         <% end %>

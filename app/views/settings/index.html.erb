@@ -1,13 +1,11 @@
 <div class="box wide">
   <div class="legend right">
-    <a href="/filters">Filtered Tags</a>
-    |
-    <%= link_to "Logout", { :controller => "login", :action => "logout" },
+    <%= link_to "Sair", { :controller => "login", :action => "logout" },
       :data => { :confirm => "Você tem certeza que quer sair?" },
       :method => "post" %>
   </div>
   <div class="legend">
-    Account Settings (<a href="/u/<%= @user.username %>">View Profile</a>)
+    Configurações da Conta (<a href="/u/<%= @user.username %>">Ver Perfil</a>)
   </div>
 
   <%= form_for @edit_user, :url => settings_path, :method => :post,
@@ -15,7 +13,7 @@
     <%= error_messages_for f.object %>
 
     <div class="boxline">
-      <%= f.label :username, "Username:", :class => "required" %>
+      <%= f.label :username, "Nome de Usuário:", :class => "required" %>
       <%= f.text_field :username, :size => 15 %>
       <span class="hint">
         <tt><%= User.username_regex_s %></tt>
@@ -23,30 +21,30 @@
     </div>
 
     <div class="boxline">
-      <%= label_tag :current_password, "Current Password:",
+      <%= label_tag :current_password, "Senha Atual:",
         :class => "required" %>
       <%= password_field_tag :current_password, nil, :size => 40 %>
     </div>
 
     <div class="boxline">
-      <%= f.label :password, "New Password:", :class => "required" %>
+      <%= f.label :password, "Nova Senha:", :class => "required" %>
       <%= f.password_field :password, :size => 40, :autocomplete => "off" %>
     </div>
 
     <div class="boxline">
-      <%= f.label :password_confirmation, "Confirm Password:",
+      <%= f.label :password_confirmation, "Confirme a Senha:",
         :class => "required" %>
       <%= f.password_field :password_confirmation, :size => 40,
         :autocomplete => "off" %>
     </div>
 
     <div class="boxline">
-      <%= f.label :email, "E-mail Address:", :class => "required" %>
+      <%= f.label :email, "Endereço de E-mail:", :class => "required" %>
       <%= f.email_field :email, :size => 40 %>
     </div>
 
     <div class="boxline">
-      <%= f.label :about, "About:", :class => "required" %>
+      <%= f.label :about, "Sobre:", :class => "required" %>
       <%= f.text_area :about, :size => "100x5", :style => "width: 600px;" %>
     </div>
 
@@ -54,7 +52,7 @@
       <div class="boxline markdown_help_toggler" style="margin-left: 9em;
       width: 600px;">
         <div class="markdown_help_label">
-          Markdown formatting available
+          Formatação disponível em Markdown
         </div>
 
         <div style="clear: both;"></div>
@@ -64,13 +62,13 @@
     </div>
 
     <p>
-    <%= f.submit "Save Account Settings" %>
+    <%= f.submit "Salvar Configurações da Conta" %>
     </p>
 
     <br>
 
     <div class="legend">
-      External Accounts
+      Contas Externas
     </div>
 
     <div class="boxline">
@@ -78,9 +76,9 @@
         raw("<a href=\"https://gravatar.com/\">Gravatar</a>:"),
         :class => "required" %>
       <span>
-        Your avatar will be cached from the Gravatar icon for your e-mail
-        address above.
-        (<%= link_to "Expire cache", "/avatars/expire", :method => :post %>)
+        Seu avatar vai ser cacheado do ícone de Gravatar do seu endereço de e-mail
+        acima.
+        (<%= link_to "Expirar cache", "/avatars/expire", :method => :post %>)
       </span>
     </div>
 
@@ -114,7 +112,7 @@
             (<%= link_to "Disconnect", "/settings/github_disconnect",
               :method => :post %>)
         <% else %>
-          <a href="/settings/github_auth">Connect</a>
+          <a href="/settings/github_auth">Conectar</a>
         <% end %>
         </span>
       </div>
@@ -133,7 +131,7 @@
             (<%= link_to "Disconnect", "/settings/twitter_disconnect",
               :method => :post %>)
         <% else %>
-          <a href="/settings/twitter_auth">Connect</a>
+          <a href="/settings/twitter_auth">Conectar</a>
         <% end %>
         </span>
       </div>
@@ -142,7 +140,7 @@
     <br>
 
     <div class="legend">
-      Security Settings
+      Segurança
     </div>
 
     <div class="boxline">
@@ -150,10 +148,10 @@
       <span>
       <% if @edit_user.totp_secret.present? %>
         <span style="color: green; font-weight: bold;">
-          Enabled
-        </span> (<a href="/settings/2fa">Disable</a>)
+          Ativado
+        </span> (<a href="/settings/2fa">Desativar</a>)
       <% else %>
-        Disabled (<a href="/settings/2fa">Enroll</a>)
+        Desativado (<a href="/settings/2fa">Ativar</a>)
       <% end %>
       </span>
     </div>
@@ -161,72 +159,72 @@
     <br>
 
     <div class="legend">
-      Comment Reply Notification Settings
+      Notificações para Respostas a Comentários
     </div>
 
     <div class="boxline">
-      <%= f.label :email_replies, "Receive E-mail:", :class => "required" %>
+      <%= f.label :email_replies, "Receber E-mail:", :class => "required" %>
       <%= f.check_box :email_replies %>
     </div>
 
     <div class="boxline">
-      <%= f.label :pushover_replies, "Receive Pushover Alert:",
+      <%= f.label :pushover_replies, "Receber Alerta:",
         :class => "required" %>
       <%= f.check_box :pushover_replies %>
       <span class="hint">
-        Requires Pushover subscription above
+        Requer assinar alertas Pushover acima
       </span>
     </div>
 
     <br>
 
     <div class="legend">
-      Comment Mention Notification Settings
+      Notificações para Menções em Comentários
     </div>
 
     <div class="boxline">
-      <%= f.label :email_mentions, "Receive E-mail:", :class => "required" %>
+      <%= f.label :email_mentions, "Receber E-mail:", :class => "required" %>
       <%= f.check_box :email_mentions %>
     </div>
 
     <div class="boxline">
-      <%= f.label :pushover_mentions, "Receive Pushover Alert:",
+      <%= f.label :pushover_mentions, "Receber Alerta:",
         :class => "required" %>
       <%= f.check_box :pushover_mentions %>
       <span class="hint">
-        Requires Pushover subscription above
+        Requer assinar alertas Pushover acima
       </span>
     </div>
 
     <br>
 
     <div class="legend">
-      Private Message Notification Settings
+      Notificações para Mensagens Privadas
     </div>
 
     <div class="boxline">
-      <%= f.label :email_messages, "Receive E-mail:", :class => "required" %>
+      <%= f.label :email_messages, "Receber E-mail:", :class => "required" %>
       <%= f.check_box :email_messages %>
     </div>
 
     <div class="boxline">
-      <%= f.label :pushover_messages, "Receive Pushover Alert:",
+      <%= f.label :pushover_messages, "Receber Alerta:",
         :class => "required" %>
       <%= f.check_box :pushover_messages %>
       <span class="hint">
-        Requires Pushover subscription above
+        Requer assinar alertas Pushover acima
       </span>
     </div>
 
     <br>
 
     <div class="legend">
-      Submitted Story Comment Settings
+      Comentários em Histórias Enviadas
     </div>
 
     <div class="boxline">
       <%= f.label :show_submitted_story_threads,
-        raw("Show in <a href=\"/threads\">Discussões</a>:"),
+        raw("Mostrar em <a href=\"/threads\">Discussões</a>:"),
         :class => "required" %>
       <%= f.check_box :show_submitted_story_threads %>
     </div>
@@ -234,28 +232,26 @@
     <br>
 
     <div class="legend">
-      Mailing List Settings
+      Lista de E-mails
     </div>
 
     <p>
-    When enabled, you will receive all newly submitted stories and comments to
-    your e-mail address entered above, except the stories and comments filtered
-    by your <a href="/filters">tag filters</a>.
-    All e-mail messages will appear to be sent to your private list address
-    shown below which you can filter on, and e-mails you send to that address
-    will be posted under your account on this website.  You should keep your
-    unique list address private to prevent others from posting comments as you.
-    </p>
+    Quando ativado, você irá receber novas histórias e comentários em seu
+    endereço de email. Todas os emails serão enviados através da lista de
+    endereço privada abaixo podendo assim ser filtados, e emails que você
+    enviar para este endereço serão postados em sua conta no site. Tome
+    cuidado portanto para manter esse endereço seja mantido em privado e
+    outras pessoas não postem em sua conta.
 
     <div class="boxline">
-      <%= f.label :mailing_list_mode, "Receive List E-mails:",
+      <%= f.label :mailing_list_mode, "Receber E-mails:",
         :class => "required" %>
-      <%= f.select :mailing_list_mode, [ [ "No e-mails", 0 ],
-        [ "All stories and comments", 1 ], [ "Only stories", 2 ] ] %>
+      <%= f.select :mailing_list_mode, [ [ "Nenhum e-mail", 0 ],
+        [ "Todas as histórias e comentários", 1 ], [ "Apenas histórias", 2 ] ] %>
     </div>
 
     <div class="boxline">
-      <label class="required">List Address:</label>
+      <label class="required">Endereço da Lista:</label>
       <span>
       <tt><%= Rails.application.shortname %>-<%=
         @edit_user.mailing_list_token %>@<%= Rails.application.domain %></tt>
@@ -263,24 +259,7 @@
     </div>
 
     <br>
-
-    <div class="legend">
-      Miscellaneous Settings
-    </div>
-
-    <div class="boxline">
-      <%= f.label :show_story_previews, "Show Story Previews:",
-        :class => "required" %>
-      <%= f.check_box :show_story_previews %>
-    </div>
-
-    <div class="boxline">
-      <%= f.label :show_avatars, "Show User Avatars:", :class => "required" %>
-      <%= f.check_box :show_avatars %>
-    </div>
-
-    <br>
-    <%= f.submit "Save All Settings" %>
+    <%= f.submit "Salvar Todas as Configurações" %>
   <% end %>
 
   <br>
@@ -288,57 +267,13 @@
 
   <a name="invite"></a>
   <div class="legend">
-    Invite a New User
+    Convidar Novo Usuário
   </div>
 
   <% if @user.can_invite? %>
     <%= render :partial => "users/invitationform" %>
   <% else %>
-      You cannot send invitations: <%= @user.disabled_invite_reason %>
+      Você não possui permissão para enviar convites: <%= @user.disabled_invite_reason %>
   <% end %>
 
-  <br>
-  <br>
-
-  <div class="deletion">
-    <%= form_for @edit_user, :url => delete_account_path, :method => :post,
-    :html => { :id => "delete_user" } do |f| %>
-      <div class="legend">
-        Delete Account
-      </div>
-
-      <p>
-      To permanently delete your account, verify your current password below.
-      </p>
-      <ul>
-        <li>Your account will be put into a deleted state.</li>
-        <li>Your username will remain reserved and will not be available to be
-          used on any other account.</li>
-        <li>Your private messages will be deleted.</li>
-        <li>Your submitted stories will not be deleted.</li>
-        <li>
-          Your comments with negative scores will be deleted, and you can click
-          "disown comments" below if you want all of your comments to change to
-          list <a href="/u/inactive-user">inactive-user</a> as the author
-          instead of your username.
-        </li>
-      </ul>
-
-      <div class="boxline">
-        <%= f.label :password, "Verify Password:", :class => "required" %>
-        <%= f.password_field :password, :size => 40, :autocomplete => "off" %>
-      </div>
-      <div class="boxline">
-        <%= f.label :disown, "Disown Comments:" %>
-        <%= check_box_tag :disown %>
-      </div>
-
-      <br>
-      <div class="boxline">
-        <%= f.label :i_am_sure, "I am sure:", :class => "required" %>
-        <%= check_box_tag :i_am_sure %>
-      </div>
-      <%= f.submit "Yes, Delete My Account", :class => "deletion" %>
-    <% end %>
-  </div>
 </div>
