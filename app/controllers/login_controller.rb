@@ -16,7 +16,7 @@ class LoginController < ApplicationController
   end
 
   def index
-    @title = "Login"
+    @title = "Entrar"
     @referer ||= request.referer
     render :action => "index"
   end

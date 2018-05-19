@@ -24,7 +24,7 @@ data-shortid="<%= comment.short_id if comment.persisted? %>">
     <div class="markdown_help_toggler">
       <% if @user %>
         <div class="markdown_help_label">
-          Markdown formatting available
+          Formatação disponível em Markdown
         </div>
         <div class="markdown_help_label markdown_help_label_mobile"
         style="display: none;">
@@ -32,10 +32,10 @@ data-shortid="<%= comment.short_id if comment.persisted? %>">
         </div>
       <% end %>
 
-      <%= submit_tag "#{comment.new_record?? "Post" : "Update"}",
+      <%= submit_tag "#{comment.new_record?? "Publicar" : "Atualizar"}",
         :class => "comment-post", :disabled => !@user %>
       &nbsp;
-      <%= button_tag "Preview", :class => "comment-preview",
+      <%= button_tag "Pré-Visualizar", :class => "comment-preview",
         :type => "button", :disabled => !@user %>
       <% if comment.persisted? || comment.parent_comment_id %>
         &nbsp;

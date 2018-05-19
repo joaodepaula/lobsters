@@ -1,6 +1,6 @@
 <div class="box wide">
   <div class="legend">
-    Login
+    Entrar
   </div>
 
   <% if Rails.application.read_only? %>
@@ -10,38 +10,35 @@
   <% else %>
     <%= form_tag login_path do %>
     <p>
-      <%= label_tag :email, "E-mail or Username:" %>
+      <%= label_tag :email, "E-mail ou Usuário:" %>
       <%= text_field_tag :email, "", :size => 30, :autofocus => "autofocus" %>
       <br />
 
-      <%= label_tag :password, "Password:" %>
+      <%= label_tag :password, "Senha:" %>
       <%= password_field_tag :password, "", :size => 30 %>
       <br />
       </p>
 
       <p>
-      <%= submit_tag "Login" %>
+      <%= submit_tag "Entrar" %>
       </p>
 
       <p>
-      Forgot your password or deleted your account?
-        <%= link_to "Reset your password", forgot_password_path %>.
+      Esqueceu sua senha?
+        <%= link_to "Resetar senha", forgot_password_path %>.
       </p>
 
       <% if Rails.application.open_signups? %>
         <p>
-          Not a user yet? <a href="/invitations/open">Sign up here</a>.
+          Não é um usuário ainda? <a href="/invitations/open">Cadastre-se aqui</a>.
         </p>
       <% else %>
         <p>
-        Not a user yet?  Signup is by invitation only to combat spam and increase
-        accountability.  If you know <a href="/u/">a current user</a> of the site,
-        ask them for an invitation or
-        <% if Rails.application.allow_invitation_requests? %>
-          <a href="/invitations/request">request one publicly</a>.
-        <% else %>
-          request one in <a href="/chat">chat</a>.
-        <% end %>
+        Não é um usuário ainda? O cadastro é apenas através de convites, para evitar
+        spam e trolls, e estimular discussões de qualidade. Se você conhece algum <a
+        href="/u/">atual usuário</a> do site, peça um convite. Caso contrário,
+        preencha o <a href="https://goo.gl/forms/yiDFUn6W7Ji805kc2" target="_blank">
+        formulário de aplicação</a> e nos conte um pouco mais sobre você.
         </p>
       <% end %>
 
