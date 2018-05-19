@@ -11,6 +11,7 @@
 /* force a vertical scrollbar to avoid page-shifting */
 html {
 	overflow-y: scroll;
+	height: 100%;
 }
 
 body, textarea, input, button {
@@ -23,6 +24,7 @@ body, textarea, input, button {
 body {
 	background-color: #eef2f5;
 	margin: 0;
+	height: 100%;
 }
 
 a {
@@ -31,7 +33,7 @@ a {
 }
 
 li.story div.details span.link a:visited {
-	color: #7395d9;
+	color: #8b14b3;
 }
 
 h1 {
@@ -254,10 +256,13 @@ input.deletion {
 div#wrapper {
 	margin-left: auto;
 	margin-right: auto;
-	padding-bottom: 2em;
 	min-width: 600px;
-	max-width: 900px;
+	max-width: 1100px;
+	height: auto;
+	min-height: 100%;
 	background-color: #fefefe;
+	border-left: 1px solid #EAEAEA;
+    border-right: 1px solid #EAEAEA;
 }
 div#inside {
 	margin-left: 0.25em;
@@ -269,7 +274,7 @@ div#inside {
 
 #header {
 	font-weight: bold;
-	padding: 1.5em 10px 5px 10px;
+	padding: 1.5em 15px 5px 10px;
 	margin-bottom: 0.5em;
 	line-height: 18px;
 }
@@ -349,7 +354,8 @@ div#footer {
 	float: right;
 	font-weight: bold;
 	margin-top: 1.5em;
-	padding-right: 10px;
+	padding-right: 12px;
+	padding-bottom: 2em;
 }
 div#footer a {
 	color: #999;
@@ -699,7 +705,7 @@ ol.show_hidden li.story.hidden {
 	opacity: 1.0 !important;
 }
 li.story.saved a.saver {
-	color: green;
+	color: #deb81f;
 }
 
 li.story.expired {
@@ -1078,7 +1084,7 @@ table.data td p:last-child {
 /* boxes */
 .box {
 	border: 0;
-	margin: 0 40px;
+	margin: 0 12px 0 13px;
 	padding: 0;
 }
 .box_submitter {

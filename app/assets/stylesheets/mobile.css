@@ -15,6 +15,11 @@
 		background-color: #eee;
 		border-bottom: 1px solid #ccc;
 	}
+
+	#l_holder {
+		display: none !important;
+	}
+
 	div#leader {
 		padding: 8px;
 	}
@@ -117,7 +122,7 @@
 		border-bottom-color: #bbb;
 	}
 	.upvoted div.voters .upvoter {
-		border-bottom-color: #ac130d;
+		border-bottom-color: #1463b4;
 	}
 
 	ol.stories.list {
