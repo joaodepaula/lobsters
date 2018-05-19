@@ -20,7 +20,7 @@
     <link rev="canonical" rel="self alternate shorter shorturl shortlink"
       href="<%= @short_url %>" />
   <% end %>
-  <title><%= @title.present? ? "#{@title} | " : "" %><%=
+  <title><%= @title.present? ? "#{@title} · " : "" %><%=
     Rails.application.name %></title>
   <%= stylesheet_link_tag "application", :media => "all" %>
   <% if @user %>
@@ -44,7 +44,7 @@
   <div id="wrapper">
     <div id="header">
       <div id="headerleft">
-        <a id="l_holder" style="<%= @traffic_style %>"
+        <a id="l_holder" style="background-color: #1463b4;"
           href="/" title="<%= Rails.application.name %> (Current traffic: <%=
           @traffic.to_i %>)"></a>
 
@@ -94,20 +94,13 @@
           <% if !@user && Rails.application.open_signups? %>
             <a href="/invitations/open">Join <%= Rails.application.name %></a>
           <% end %>
-          <a href="/moderations">Moderation Log</a>
           <% if @user && @user.can_see_invitation_requests? &&
           (iqc = InvitationRequest.verified_count) > 0 %>
             <a href="/invitations">Invitation Queue (<%= iqc %>)</a>
           <% end %>
-          <% if @user && @user.is_moderator? &&
-          (hrc = HatRequest.count) > 0 %>
-            <a href="/hats/requests">Hat Requests (<%= hrc %>)</a>
-          <% else %>
-            <a href="/hats">Hats</a>
-          <% end %>
-          <a href="/chat">Chat</a>
-          <a href="/privacy">Privacy</a>
-          <a href="/about">About</a>
+          <a href="https://twitter.com/nimio_10" target="_blank">Twitter</a>
+          <a href="mailto:contato@nimio.com.br" target="_blank">Contato</a>
+          <a href="/about">Sobre</a>
         <% end %>
       </div>
       <div class="clear"></div>

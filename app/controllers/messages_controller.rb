@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
     respond_to do |format|
       format.html {
         @cur_url = "/messages"
-        @title = "Messages"
+        @title = "Mensagens"
 
         @new_message = Message.new
 
@@ -30,7 +30,7 @@ class MessagesController < ApplicationController
     respond_to do |format|
       format.html {
         @cur_url = "/messages"
-        @title = "Messages Sent"
+        @title = "Mensagens Enviadas"
 
         @direction = :out
 
@@ -46,7 +46,7 @@ class MessagesController < ApplicationController
 
   def create
     @cur_url = "/messages"
-    @title = "Messages"
+    @title = "Mensagens"
 
     @new_message = Message.new(message_params)
     @new_message.author_user_id = @user.id

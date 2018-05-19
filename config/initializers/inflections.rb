@@ -14,3 +14,13 @@
 # ActiveSupport::Inflector.inflections(:en) do |inflect|
 #   inflect.acronym 'RESTful'
 # end
+
+ActiveSupport::Inflector.inflections do |inflect|
+  inflect.plural 'minuto', 'minutos'
+  inflect.plural 'hora', 'horas'
+  inflect.plural 'dia', 'dias'
+  inflect.plural 'mês', 'meses'
+  inflect.plural 'ano', 'anos'
+  inflect.plural 'Resposta', 'Respostas'
+  inflect.plural 'Mensagem', 'Mensagens'
+end

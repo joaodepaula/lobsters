@@ -213,7 +213,7 @@ class CommentsController < ApplicationController
       :href => "/comments.rss" + (@user ? "?token=#{@user.rss_token}" : ""),
     }
 
-    @heading = @title = "Newest Comments"
+    @heading = @title = "Últimos Comentários"
     @cur_url = "/comments"
 
     @page = params[:page].to_i
@@ -271,7 +271,7 @@ class CommentsController < ApplicationController
       return redirect_to "/login"
     else
       @showing_user = @user
-      @heading = @title = "Your Threads"
+      @heading = @title = "Discussões"
       @cur_url = "/threads"
     end
 

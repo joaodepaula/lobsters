@@ -5,7 +5,7 @@ class RepliesController < ApplicationController
   after_action :update_read_ribbons, only: [:unread]
 
   def all
-    @heading = @title = "All Your Replies"
+    @heading = @title = "Todas as Suas Repostas"
     @replies = ReplyingComment
                  .for_user(@user.id)
                  .offset((@page - 1) * REPLIES_PER_PAGE)
@@ -15,7 +15,7 @@ class RepliesController < ApplicationController
   end
 
   def comments
-    @heading = @title = "Your Comment Replies"
+    @heading = @title = "Suas Respostas a Comentários"
     @replies = ReplyingComment
                  .comment_replies_for(@user.id)
                  .offset((@page - 1) * REPLIES_PER_PAGE)
@@ -25,7 +25,7 @@ class RepliesController < ApplicationController
   end
 
   def stories
-    @heading = @title = "Your Story Replies"
+    @heading = @title = "Suas Respostas a Histórias"
     @replies = ReplyingComment
                  .story_replies_for(@user.id)
                  .offset((@page - 1) * REPLIES_PER_PAGE)
@@ -35,7 +35,7 @@ class RepliesController < ApplicationController
   end
 
   def unread
-    @heading = @title = "Your Unread Replies"
+    @heading = @title = "Suas Respostas Não Lidas"
     @replies = ReplyingComment.unread_replies_for(@user.id)
     apply_current_vote
     render :show
