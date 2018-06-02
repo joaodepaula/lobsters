@@ -336,22 +336,24 @@ class Story < ApplicationRecord
   # this has to happen just before save rather than in tags_a= because we need
   # to have a valid user_id
   def check_tags
-    u = self.editor || self.user
+    # FIXME: does nothing
 
-    self.taggings.each do |t|
-      if !t.tag.valid_for?(u)
-        raise "#{u.username} does not have permission to use privileged tag #{t.tag.tag}"
-      elsif t.tag.inactive? && t.new_record? && !t.marked_for_destruction?
-        # stories can have inactive tags as long as they existed before
-        raise "#{u.username} cannot add inactive tag #{t.tag.tag}"
-      end
-    end
+    # u = self.editor || self.user
 
-    if self.taggings.reject {|t| t.marked_for_destruction? || t.tag.is_media? }.empty?
-      errors.add(:base, "Must have at least one non-media (PDF, video) " <<
-        "tag.  If no tags apply to your content, it probably doesn't " <<
-        "belong here.")
-    end
+    # self.taggings.each do |t|
+    #   if !t.tag.valid_for?(u)
+    #     raise "#{u.username} does not have permission to use privileged tag #{t.tag.tag}"
+    #   elsif t.tag.inactive? && t.new_record? && !t.marked_for_destruction?
+    #     # stories can have inactive tags as long as they existed before
+    #     raise "#{u.username} cannot add inactive tag #{t.tag.tag}"
+    #   end
+    # end
+
+    # if self.taggings.reject {|t| t.marked_for_destruction? || t.tag.is_media? }.empty?
+    #   errors.add(:base, "Must have at least one non-media (PDF, video) " <<
+    #     "tag.  If no tags apply to your content, it probably doesn't " <<
+    #     "belong here.")
+    # end
   end
 
   def comments_path
