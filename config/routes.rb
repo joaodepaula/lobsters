@@ -4,6 +4,14 @@ Lobsters::Application.routes.draw do
       :protocol => (Rails.application.config.force_ssl ? "https://" : "http://"),
       :as => "root"
 
+    constraints(host: /^www\./i) do
+      match '(*any)' => redirect { |params, request|
+        URI.parse(request.url).tap { |uri|
+          uri.host.sub!(/^www\./i, '')
+        }.to_s
+      }, via: :get
+    end
+
     get "/404" => "home#four_oh_four", :via => :all
 
     get "/rss" => "home#index", :format => "rss"
