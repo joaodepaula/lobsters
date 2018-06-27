@@ -24,7 +24,8 @@ class HomeController < ApplicationController
       render :html => ("<div class=\"box wide\" style=\"max-width: 610px;\">" <<
         "<br>
         O Nimio é um agregador de notícias e discussões sobre startups e
-        tecnologia – inspirado no Hacker News, porém em língua portuguesa.
+        tecnologia inspirado no <a href=\"https://news.ycombinator.com/\">Hacker
+        News</a>.
         <br>
         O site foi criado por <a href=\"http://twitter.com/rriccio\"
         target=\"_blank\">Roberto Riccio</a> e
