@@ -1,9 +1,5 @@
 Lobsters::Application.routes.draw do
   scope :format => "html" do
-    root :to => "home#index",
-      :protocol => (Rails.application.config.force_ssl ? "https://" : "http://"),
-      :as => "root"
-
     constraints(host: /^www\./i) do
       match '(*any)' => redirect { |params, request|
         URI.parse(request.url).tap { |uri|
@@ -11,6 +7,10 @@ Lobsters::Application.routes.draw do
         }.to_s
       }, via: :get
     end
+
+    root :to => "home#index",
+      :protocol => (Rails.application.config.force_ssl ? "https://" : "http://"),
+      :as => "root"
 
     get "/404" => "home#four_oh_four", :via => :all
 
