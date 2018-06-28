@@ -48,11 +48,11 @@ class InvitationsController < ApplicationController
     begin
       i.save!
       i.send_email
-      flash[:success] = "Successfully e-mailed invitation to " <<
+      flash[:success] = "Convite enviado com sucesso para " <<
                         params[:email].to_s << "."
     rescue
-      flash[:error] = "Could not send invitation, verify the e-mail " <<
-                      "address is valid."
+      flash[:error] = "Erro ao enviar o convite, confirme se o endereço " <<
+                      "de email é válido."
     end
 
     if params[:return_home]
@@ -99,7 +99,7 @@ class InvitationsController < ApplicationController
     i.save!
     i.send_email
     ir.destroy!
-    flash[:success] = "Successfully e-mailed invitation to " <<
+    flash[:success] = "Convite enviado com sucesso para " <<
                       ir.name.to_s << "."
 
     Rails.logger.info "[u#{@user.id}] sent invitiation for request " <<
