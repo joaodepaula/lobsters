@@ -6,7 +6,7 @@ class InvitationMailer < ActionMailer::Base
 
     mail(
       to: invitation.email,
-      subject: "[#{Rails.application.name}] You are invited to join " <<
+      subject: "[#{Rails.application.name}] Você está convidado para o " <<
                Rails.application.name
     )
   end
